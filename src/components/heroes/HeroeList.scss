@@ -1,0 +1,14 @@
+
+@import 'bootstrap/scss/_functions.scss';
+@import 'bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/_mixins.scss';
+
+
+
+
+.card-columns {
+    @include media-breakpoint-only(sm) {
+      column-count: 2;
+    }
+   
+  }
