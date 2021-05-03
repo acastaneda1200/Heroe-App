@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { HeroeList } from '../heroes/HeroeList';
+import { AuthContext } from '../../auth/AuthContext';
+
 import { ResultSearch } from '../search/ResultSearch';
+
 
 export const Navbar = () => {
     const [newHeroes, setNewHeroes] = useState([])
-   
+    const { user } = useContext(AuthContext)
 
-    
+
     return (
         <>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -39,12 +41,23 @@ export const Navbar = () => {
                         >
                             DC
                     </NavLink>
+                        <NavLink
+                            activeClassName="active"
+                            className="nav-item nav-link"
+                            exact
+                            to="/search"
+                        >
+                            Buscar
+                    </NavLink>
                     </div>
                 </div>
 
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul className="navbar-nav ml-auto">
-                        <ResultSearch setNewHeroes={setNewHeroes} />
+                        <ResultSearch/>
+                        <span className="ml-3 text-info">
+                            {user.name}
+                        </span>
                         <NavLink
                             activeClassName="active"
                             className="nav-item nav-link"
@@ -56,7 +69,7 @@ export const Navbar = () => {
                     </ul>
                 </div>
             </nav>
-            {
+            {/*  {
 
                 (newHeroes.length > 0)
 
@@ -66,7 +79,7 @@ export const Navbar = () => {
                 </div>
 
 
-            }
+            } */}
         </>
     )
 }
