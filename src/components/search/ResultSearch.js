@@ -1,46 +1,46 @@
-import React, {  useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
+import { getHeroeBySearch } from '../../selectors/getHeroeBySearch';
+import { SearchContext } from './SearchContext';
 
 
-import { useHistory } from 'react-router-dom';
 
-
-
-export const ResultSearch = ({setNewHeroes}) => {
+export const ResultSearch = () => {
+   
+   
     
     const [searchHeroe, setSearchHeroe] = useState('');
-    const routerHistory = useHistory();
-    console.log(routerHistory);
-
+    const {setNewHeroes}   = useContext(SearchContext)
     
     const handleInputChange = (e) => {
 
         setSearchHeroe(e.target.value);
-        routerHistory.replace(`/search?q=${searchHeroe}`)
+        
+     
     }
 
+    
 
     //console.log(searchHeroe);
-/* 
+
     useEffect(() => {
         if (searchHeroe.length > 0) {
             const searchPublisher = getHeroeBySearch(searchHeroe);
-
-            setNewHeroes(searchPublisher)
+           setNewHeroes(searchPublisher)
         
             
         }else{
             setNewHeroes('')
         }
 
-    }, [searchHeroe]) */
+    }, [searchHeroe])
 
 
 
     return (
         <>
-          
+        
             <input className="form-control mr-sm-2" type="search" onChange={handleInputChange} value={searchHeroe} placeholder="Buscar Heroe" aria-label="Search" />
-           
+        
         </>
     )
 }

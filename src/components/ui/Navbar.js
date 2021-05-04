@@ -3,15 +3,18 @@ import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../../auth/AuthContext';
 
 import { ResultSearch } from '../search/ResultSearch';
+import { SearchContext } from '../search/SearchContext';
 
 
 export const Navbar = () => {
-    const [newHeroes, setNewHeroes] = useState([])
+   
+    //const [newHeroes, setNewHeroes] = useState([])
     const { user } = useContext(AuthContext)
-
-
+   // const {newHeroes, setNewHeroes} = useContext(SearchContext)
+    
     return (
         <>
+         
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
 
                 <Link
@@ -69,6 +72,7 @@ export const Navbar = () => {
                     </ul>
                 </div>
             </nav>
+        
             {/*  {
 
                 (newHeroes.length > 0)
